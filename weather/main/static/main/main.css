@@ -1,0 +1,84 @@
+:root {
+
+    --font: 'Montserrat', sans-serif;
+    /* цвет текста */
+    --text-alpha: #212529;
+    --text-beta: #fff;
+
+    /* Цвет элементов */
+    --el-alpha: #4cd3aa;
+    --el-beta: #f64747;
+    --el-shadow-alpha: 0 0 0 .12rem rgb(76, 211, 170);
+
+    /* Цвет бэграунда */
+    --bg-main: #fff;
+
+}
+
+body {
+    font-family: var(--font);
+    color: var(--text-alpha);
+    background-color: var(--bg-main);
+}
+
+.root {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    height: 100vh;
+    width: min(640px, 100%);
+}
+
+.card-header {
+    background: linear-gradient(90deg, rgba(76, 211, 170, 1) 0%, rgba(255, 255, 255, 0.4962185557816877) 100%);
+    color: var(--text-beta);
+}
+
+body,
+.form-control
+.form-select,
+.card-body {
+    background-color: var(--bg-main);
+}
+
+.icon {
+    width: 54px;
+    margin-bottom: .5rem;
+}
+
+.flatpickr {
+    position: relative;
+}
+
+.flatpickr a {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover {
+    background: var(--el-alpha);
+    border-color: var(--el-alpha);
+}
+
+.flatpickr-day.today {
+    border-color: var(--el-beta);
+}
+
+.flatpickr-day.today:hover,
+.flatpickr-day.today:focus {
+    border-color: var(--el-beta);
+    background: var(--el-beta);
+}
+
+.form-control::placeholder {
+    color: var(--text-alpha);
+}
+
+.form-select:focus,
+.form-control:focus {
+    border-color: var(--el-alpha);
+    box-shadow: var(--el-shadow-alpha)
+}
