@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from .models import mockDb
+from .forms import WeatherForm
 
 def index(request):
-    mock = mockDb.objects.all()
-    return render(request, 'main/index.html', {"cities":mock})
+
+    cities = WeatherForm()
+
+    return render(request, 'main/index.html', {"cities":cities})

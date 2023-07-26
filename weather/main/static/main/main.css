@@ -1,5 +1,5 @@
-:root {
 
+:root {
     --font: 'Montserrat', sans-serif;
     /* цвет текста */
     --text-alpha: #212529;
@@ -12,13 +12,11 @@
 
     /* Цвет бэграунда */
     --bg-main: #fff;
-
 }
 
 body {
     font-family: var(--font);
     color: var(--text-alpha);
-    background-color: var(--bg-main);
 }
 
 .root {
@@ -27,6 +25,10 @@ body {
     margin: auto;
     height: 100vh;
     width: min(640px, 100%);
+}
+
+.card {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .card-header {

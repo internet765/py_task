@@ -1,8 +1,8 @@
-{% extends 'main/layout.html' %}
+{% extends 'main/layout.html' %} 
 
 {% load static %}
 
-{% block title %} Прогноз погоды {% endblock %} 
+{% block title %} Прогнозпогоды {% endblock %} 
 
 {% block content %}
 
@@ -13,80 +13,71 @@
             <img src="{% static 'main/image/logo.png' %}" alt="Лого" />
         </div>
         <div class="card-body">
-            <form>
-                <div class="form-group row">
-                    <div class="col-12 col-md-6">
-                        <select
-                            class="form-select"
-                            aria-label="Default select example"
-                        >
-                            <option selected>Выберите город</option>
-                                {% for city in cities %}
-                                    <option value="{{city}}">{{city}}</option>
-                                {% endfor %}
-                        </select>
-                        <div class="flatpickr mt-3" id="data-input">
-                            <input
-                                class="form-control"
-                                placeholder="Выбрать дату"
-                                data-input
-                                readonly
-                            />
-                            <a class="input-button" title="toggle" data-toggle>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                >
-                                    <path
-                                        d="M3 6C3 4.89543 3.89543 4 5 4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V6Z"
-                                        stroke="rgba(0,0,0,0.95)"
-                                        stroke-width="1.5"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                    <path
-                                        d="M3 10H21"
-                                        stroke="rgba(0,0,0,0.95)"
-                                        stroke-width="1.5"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                    <path
-                                        d="M16 2V6"
-                                        stroke="rgba(0,0,0,0.95)"
-                                        stroke-width="1.5"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                    <path
-                                        d="M8 2V6"
-                                        stroke="rgba(0,0,0,0.95)"
-                                        stroke-width="1.5"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 mt-3 mt-md-0 text-center">
-                        <img
-                            class="icon"
-                            src="{% static 'main/image/rain.png' %}"
-                            alt="Иконка дожь"
+            <div class="row">
+                <form method="post" id="form" class="form-group col-12 col-md-6">
+                    
+                    {% csrf_token %}
+                    
+                    {{cities}}
+
+                    <div class="flatpickr mt-3" id="data-input">
+                        <input
+                            class="form-control"
+                            placeholder="Выбрать дату"
+                            data-input
                         />
-                        <p class="m-0">
-                            Температура воздуха: <span>12 °C</span>
-                        </p>
+                        <a class="input-button" title="toggle" data-toggle>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                            >
+                                <path
+                                    d="M3 6C3 4.89543 3.89543 4 5 4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V6Z"
+                                    stroke="rgba(0,0,0,0.95)"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="M3 10H21"
+                                    stroke="rgba(0,0,0,0.95)"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="M16 2V6"
+                                    stroke="rgba(0,0,0,0.95)"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="M8 2V6"
+                                    stroke="rgba(0,0,0,0.95)"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
                     </div>
-                    <div class="col-12 col-md-12 mt-3">
-                        <canvas id="myChart"></canvas>
-                    </div>
+                </form>
+                <div class="col-12 col-md-6 mt-3 mt-md-0 text-center">
+                    <img
+                        class="icon"
+                        src="{% static 'main/image/snow.png' %}"
+                        alt="Иконка"
+                    />
+                    <p class="m-0">Температура воздуха: {{t}} <span>°C</span></p>
                 </div>
-            </form>
+                <div class="col-12 col-md-12 mt-3">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
         </div>
     </div>
 </div>
