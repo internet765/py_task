@@ -1,4 +1,5 @@
 from django.contrib import admin
-from .models import mockDb
+from .models import Cities, Weather
 
-admin.site.register(mockDb)
+admin.site.register(Cities)
+admin.site.register(Weather)

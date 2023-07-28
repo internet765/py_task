@@ -17,7 +17,12 @@
                 <form method="post" id="form" class="form-group col-12 col-md-6">
                     {% csrf_token %}
                     
-                    {{cities}}
+                    <select name="select_city" class="form-select">
+                        {% for city in cities %}
+                            <option value="{{city.id}}">{{city.city}}</option>
+                        {% endfor %}
+                    </select>
+                    <!-- <input type="submit" value="OK"> -->
                     
                     <div class="flatpickr mt-3" id="data-input">
                         <input
@@ -71,7 +76,7 @@
                         src="{% static 'main/image/snow.png' %}"
                         alt="Иконка"
                     />
-                    <p class="m-0">Температура воздуха: {{t}} <span>°C</span></p>
+                    <p class="m-0">Температура воздуха: {{weather.t}} <span>°C</span></p>
                 </div>
                 <div class="col-12 col-md-12 mt-3">
                     <canvas id="myChart"></canvas>
